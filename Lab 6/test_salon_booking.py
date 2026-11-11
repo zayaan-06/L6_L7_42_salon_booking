@@ -24,3 +24,15 @@ def test_arrival_status_cases():
     assert arrival_status(5, False, True) == "late"
     assert arrival_status(-5, False, True) == "closed"
 
+# Step 7: Additional test cases for >90% (100%) branch coverage
+def test_extra_time_validation_errors():
+    with pytest.raises(ValueError, match="unknown service"):
+        extra_time_charge("facial", 30, "junior", False)
+    with pytest.raises(ValueError, match="invalid duration"):
+        extra_time_charge("haircut", -10, "junior", False)
+
+def test_extra_time_junior_over_60_and_weekday_arrival():
+    assert extra_time_charge("haircut", 100, "junior", False) == 1260
+    assert arrival_status(10, True, False) == "open"
+
+
