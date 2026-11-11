@@ -8,4 +8,19 @@ def test_within_included_time():
 def test_can_book():
     assert can_book(2, 1, False) is True
 
-# Write the rest of the test cases so that the code is 90-100% covered.
+# Step 5: Test cases for >90% code (line) coverage
+def test_extra_time_junior_member():
+    assert extra_time_charge("haircut", 50, "junior", True) == 50
+
+def test_extra_time_senior_over_60():
+    assert extra_time_charge("haircut", 100, "senior", False) == 2100
+
+def test_can_book_walk_in_and_large_party():
+    assert can_book(2, 1, True) is True
+    assert can_book(5, 1, False) is False
+
+def test_arrival_status_cases():
+    assert arrival_status(25, True, True) == "open"
+    assert arrival_status(5, False, True) == "late"
+    assert arrival_status(-5, False, True) == "closed"
+
